@@ -5,3 +5,23 @@
 #
 - name: download country data file .osm.pbf
   get_url: url=http://download.geofabrik.de/europe/{{data_country_name}}-latest.osm.pbf dest=/home/osrm/{{data_country_name}}-latest.osm.pbf force=no mode=0644
+
+- name: profile.lua
+  shell:
+    cp /usr/local/src/osrm/profiles/car.lua /home/osrm/profile.lua
+
+- name: configure stxxl
+  template: >
+    src="./home/osrm/.stxxl.j2"
+    dest="{{osrm_datadir}}/.stxxl"
+    mode=0644
+
+- name: extract
+  shell:
+    osrm-extract /home/osrm/{{data_country_name}}-latest.osm.pbf
+    chdir={{osrm_datadir}}
+
+- name: prepare
+  shell:
+    osrm-prepare /home/osrm/{{data_country_name}}-latest.osrm
+    chdir={{osrm_datadir}}

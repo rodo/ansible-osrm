@@ -11,3 +11,5 @@
 # the country to download
 #
 data_country_name: slovenia
+
+osrm_datadir: /home/osrm

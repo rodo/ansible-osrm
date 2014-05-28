@@ -1,6 +1,6 @@
 ---
 #
-# OSRM 
+# OSRM
 # - installation
 # - configuration
 #
@@ -29,3 +29,7 @@
     make -j {{osrm_make_jobs}}
     chdir={{osrm_dest_dir}}/build
 
+- name: make install
+  shell:
+    make install
+    chdir={{osrm_dest_dir}}/build
