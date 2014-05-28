@@ -1,0 +1,13 @@
+---
+#
+# Osrm Configuration
+#
+# github:     https://github.com/rodo/ansible-osrm
+#
+##
+# Defaults for role osrm
+#
+
+# the country to download
+#
+data_country_name: slovenia
